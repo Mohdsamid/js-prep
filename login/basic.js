@@ -1,9 +1,7 @@
 let formdata = document.querySelector("#formdata")
 formdata.addEventListener("submit",(e)=>{
     e.preventDefault()
-    // console.log(formdata[0].value)
-    // console.log(formdata[1].value)
-    // console.log(formdata[2].value)
+
     let data = {
     name:formdata[0].value,
     email:formdata[1].value,
@@ -13,25 +11,33 @@ formdata.addEventListener("submit",(e)=>{
 // console.log(data)
 localStorage.setItem("userdata",JSON.stringify(data));
 })
+    console.log(formdata[0].value)
+    console.log(formdata[1].value)
+    console.log(formdata[2].value)
 
 // let 
 
 let logdata = document.querySelector("#logindata")
 logdata.addEventListener("submit",(e)=>{
     e.preventDefault()
+    let login = {
+        email:logdata[0].value,
+        pass:logdata[1].value
+    }
+
     let lsd= localStorage.getItem("userdata")
     console.log(lsd)
     let formdata = JSON.parse(lsd)
     console.log(formdata)
-    if(logdata.email===formdata.email && logdata.pass===formdata.pass){
+    if(login.email===formdata.email && login.pass===formdata.pass){
         alert("Log in successfully")
     }
     else{
         alert("Errorrrr")
     }
 })
-console.log(data);
-console.log(logdata);
+// console.log(data);
+// console.log(logdata);
 // let name = document.getElementById("name
 
 // localStorage.setItem("name",formdata[0].value)
