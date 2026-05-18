@@ -1,0 +1,41 @@
+*{
+    margin:0 ;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main {
+    height: 100vh;
+    width: 100%;
+    background: #879ef1;
+        display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.log{
+    height: 600px;
+    width: 800px;
+    background: #effaf9;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:2px solid rgb(67, 53, 53);
+}
+form{
+    margin: 24px;
+    padding: 32px;
+    border:2px solid rgb(0, 0, 0);
+    border-radius: 24px;
+
+}
+button{
+    padding: 6px;
+    margin: 12px;
+    border-radius: 12px;
+    color: #ffffff;
+    border: none;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
