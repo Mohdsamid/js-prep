@@ -10,21 +10,30 @@
     <div class="main">
         <div class="game">
       <h2 class="h">🧠 Quiz Time!</h2>
-      <div class="score">
-        <p>Score: <span>0</span> </p>
-        <div class="time2">⏱️ <span id="time">0</span>s</div>
-      </div>
+      <div class="topbar">
+        <p>Score: <span id="score">0</span> </p>
+        <div class="time2">⏱️ <span class="time" id="timer">0</span>s</div>
+      </div> 
       <div class="heading">
-        <p id="qh">Question 1 of 5</p>
-        <h2 id="ques"></h2>
+        <p class="question-num" id="questionNum">Question 1 of 5</p>
+        <h2 class="question" id="question"></h2>
       </div>
-      <div class="options">
-        <button class="ans">Hyper Text Markup Language</button>
+      <div class="options" id="options">
+        <!-- <button class="ans">Hyper Text Markup Language</button>
         <button class="ans">High Text Markup Language</button>
         <button class="ans">Hyper Tabular Markup Language</button>
-        <button class="ans">Home Tool Markup Language</button>
+        <button class="ans">Home Tool Markup Language</button> -->
       </div>
-      <button id="submit">Next Question</button>
+      <button id="nextBtn" onclick="nextquestion()" disabled>Next Question</button>
+
+      <!-- //on latter -->
+  <div id="resultScreen" class="result hide">
+    <h2>🎉 Quiz Complete!</h2>
+    <div class="final-score" id="finalScore">0 / 5</div>
+    <p id="resultMsg"></p>
+    <button id="restartBtn" onclick="restartQuiz()">Play Again</button>
+  </div>
+</div>
     </div>
     </div>
     <script src="brain.js"></script>

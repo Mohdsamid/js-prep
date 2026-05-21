@@ -55,16 +55,20 @@ const questions = [
     answered = false;
     timeLeft = 15;
     // document.getElementById('timer').textContent = timeLeft;
-      document.querySelector("#time").textContent=timeLeft
-        document.getElementById('submit').disabled = true;
+      document.querySelector("#timer").textContent=timeLeft
+        document.getElementById('nextBtn').disabled = true;
             const q = questions[currentQuestion];
     document.getElementById('questionNum').textContent =
       `Question ${currentQuestion + 1} of ${questions.length}`;
-    document.getElementById('ques').textContent = q.question;
+    document.getElementById('question').textContent = q.question;
 
 
-const optionsDiv = document.getElementById('options');
+
+
+
+    const optionsDiv = document.getElementById('options');
     optionsDiv.innerHTML = '';
+
     q.options.forEach((option, index) => {
       const btn = document.createElement('button');
       btn.className = 'option';
@@ -74,4 +78,92 @@ const optionsDiv = document.getElementById('options');
     });
 
     startTimer();
+  }
+
+
+  function startTimer() {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      document.getElementById('timer').textContent = timeLeft;
+
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        timeUp();
+      }
+    }, 1000);
+  }
+
+
+  function checkAnswer(selectedIndex, btn) {
+    if (answered) return;    
+    answered = true;
+    clearInterval(timerInterval);
+
+    const correctIndex = questions[currentQuestion].answer;
+    const allOptions = document.querySelectorAll('.option');
+
+
+    allOptions.forEach(o => o.disabled = true);
+
+    if (selectedIndex === correctIndex) {
+      btn.classList.add('correct');
+      score++;
+      document.getElementById('score').textContent = score;
+    } else {
+      btn.classList.add('wrong');
+
+      allOptions[correctIndex].classList.add('correct');
+    }
+
+    document.getElementById('nextBtn').disabled = false;
+  }
+
+
+  function timeUp() {
+    answered = true;
+    const correctIndex = questions[currentQuestion].answer;
+    const allOptions = document.querySelectorAll('.option');
+
+    allOptions.forEach(o => o.disabled = true);
+    allOptions[correctIndex].classList.add('correct');
+    document.getElementById('nextBtn').disabled = false;
+  }
+
+
+  function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+      loadQuestion();
+    } else {
+      showResult();
+    }
+  }
+
+
+  function showResult() {
+    document.getElementById('quizScreen').classList.add('hide');
+    document.getElementById('resultScreen').classList.remove('hide');
+
+    document.getElementById('finalScore').textContent = `${score} / ${questions.length}`;
+
+
+    let msg = '';
+    const percent = (score / questions.length) * 100;
+    if (percent === 100) msg = "Perfect score! 🏆 Tu toh genius hai!";
+    else if (percent >= 60) msg = "Great job! 👏 Acchhi performance.";
+    else if (percent >= 40) msg = "Not bad! Thoda aur practice kar. 💪";
+    else msg = "Don't worry, agli baar better karega! 📚";
+
+    document.getElementById('resultMsg').textContent = msg;
+  }
+
+
+  function restartQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    document.getElementById('score').textContent = 0;
+    document.getElementById('resultScreen').classList.add('hide');
+    document.getElementById('quizScreen').classList.remove('hide');
+    loadQuestion();
   }
