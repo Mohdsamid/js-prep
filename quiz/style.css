@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0f172a,#1e3a8a, #06b6d4);
+    height: 100vh;
+
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+    width: 40%;
+    background: aliceblue;
+    border-radius: 24px;
+}
+.h{
+    padding: 24px;
+    margin: 0 auto;
+    text-align: center;
+}
+.heading{
+margin: 12px;
+}
+.game{
+    width:80% ;
+    height: 100%;
+}
+.score{
+    background: #a4a4a4;
+    padding: 12px;
+    border-radius: 14px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+#qh{
+    color: #6c6c6c;
+    margin: 12px;
+}
+.options{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+
+}
+.ans{
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #606060;
+    background:#b9b5b5;
+    font-size: 14 px;
+    font-weight: 600;
+
+}
+#submit{
+    padding: 12px;
+    margin-top: 18px;
+    width: 100%;
+    background: blue;
+    color: white;
+    font-weight: 800;
+    border: 2px solid rgb(0, 200, 255);
+    border-radius: 24px;
+}
+.time{
+    color: red;
+    font-weight:700 ;
+}
+.ans::after{
+    background:rgb(88, 249, 88) ;
+}
